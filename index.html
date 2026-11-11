@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUNTIK TIKTOK — Promotion Dashboard</title>
+<style>
+:root{color-scheme:dark;--bg:#090b12;--panel:#121622;--line:#252b3b;--muted:#9aa3b8;--pink:#fe2c55;--cyan:#25f4ee}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#241326 0,transparent 38%),var(--bg);color:#f7f8fc;font:15px/1.5 Inter,system-ui,Arial}
+header{display:flex;align-items:center;justify-content:space-between;padding:20px max(5vw,20px);border-bottom:1px solid var(--line);position:sticky;top:0;background:#090b12eF;backdrop-filter:blur(12px);z-index:2}
+.brand{font-weight:900;letter-spacing:.08em}.brand span{color:var(--pink)}nav{display:flex;gap:18px}nav a{color:var(--muted);text-decoration:none}
+main{max-width:1120px;margin:42px auto;padding:0 20px}.hero{padding:28px 0 34px}.eyebrow{color:var(--cyan);font-weight:700;letter-spacing:.16em;font-size:12px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:12px 0}.sub{color:var(--muted);max-width:620px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}.panel{background:linear-gradient(145deg,#171c2a,#10141e);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 16px 50px #0003}
+h2{margin:0 0 18px;font-size:20px}.field{margin:14px 0}.field label{display:block;color:#cbd1df;font-size:13px;margin-bottom:7px}
+input,select{width:100%;padding:13px 14px;background:#0b0e17;border:1px solid #30384b;border-radius:10px;color:white;font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--cyan)}button{border:0;border-radius:10px;padding:13px 18px;background:linear-gradient(90deg,var(--pink),#d61b85);color:white;font-weight:800;cursor:pointer}
+button.secondary{background:#252c3d;border:1px solid #394258}button:disabled{opacity:.5;cursor:wait}.full{width:100%;margin-top:8px}
+.note{font-size:12px;color:var(--muted)}.notice{padding:12px;border-radius:10px;background:#0d2730;color:#a9f6ee;font-size:13px;margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{background:#0c101a;border:1px solid var(--line);padding:15px;border-radius:12px}.stat b{display:block;font-size:23px}.stat small{color:var(--muted)}
+.admin{margin-top:24px}.adminbar{display:flex;gap:8px;flex-wrap:wrap}.adminbar input{max-width:280px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted)}
+#message{margin-top:12px;color:var(--cyan)}footer{text-align:center;color:var(--muted);padding:30px 20px;font-size:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}nav{gap:10px;font-size:13px}.stats{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<header><div class="brand">SUNTIK <span>TIKTOK</span></div><nav><a href="#order">Buat pesanan</a><a href="#admin">Admin</a></nav></header>
+<main>
+<section class="hero"><div class="eyebrow">CREATOR PROMOTION PLATFORM</div><h1>Promosikan konten.<br><span style="color:var(--pink)">Kembangkan audiens.</span></h1><p class="sub">Kelola permintaan kampanye promosi TikTok dengan proses yang transparan, aman, dan sesuai ketentuan platform.</p></section>
+<div class="grid">
+<section class="panel" id="order"><h2>🚀 Buat permintaan promosi</h2>
+<form id="orderForm">
+<div class="field"><label>Nama pemesan</label><input name="name" required maxlength="80" placeholder="Nama Anda"></div>
+<div class="field"><label>Kontak (WhatsApp/email)</label><input name="contact" required maxlength="100" placeholder="08xx atau email"></div>
+<div class="field"><label>Link video TikTok</label><input name="videoUrl" type="url" required placeholder="https://www.tiktok.com/@.../video/..."></div>
+<div class="field"><label>Tujuan kampanye</label><select name="objective" required><option value="traffic">Kunjungan ke konten</option><option value="reach">Jangkauan / awareness</option><option value="website">Kunjungan website</option><option value="leads">Prospek / leads</option></select></div>
+<div class="field"><label>Anggaran (IDR)</label><input name="budget" type="number" min="10000" max="100000000" step="1000" required placeholder="Contoh: 50000"></div>
+<button class="full" id="submitBtn">Kirim permintaan</button><div id="message" role="status"></div>
+</form><div class="notice">Layanan ini untuk kampanye promosi yang sah. Tidak menyediakan like, follower, view, atau gift palsu.</div>
+</section>
+<aside class="panel"><h2>📊 Ringkasan layanan</h2><div class="stats"><div class="stat"><b>API</b><small>Integrasi provider</small></div><div class="stat"><b>24/7</b><small>Formulir online</small></div><div class="stat"><b>HTTPS</b><small>Siap dipasang SSL</small></div></div>
+<h2 style="margin-top:26px">Alur pesanan</h2><p class="sub">1. Isi detail kampanye dan anggaran.</p><p class="sub">2. Admin memeriksa permintaan.</p><p class="sub">3. Jika provider resmi dikonfigurasi, permintaan diteruskan melalui backend.</p><p class="note">API key disimpan di server (.env), tidak pernah dikirim ke browser.</p></aside>
+</div>
+<section class="panel admin" id="admin"><h2>🔐 Dashboard admin</h2><p class="note">Masukkan token admin dari file .env. Token tidak disimpan permanen di browser.</p>
+<div class="adminbar"><input id="adminToken" type="password" placeholder="ADMIN_TOKEN"><button id="loadOrders" class="secondary">Muat pesanan</button></div>
+<div id="adminMessage" class="note"></div><div class="tablewrap"><table><thead><tr><th>Waktu</th><th>Pemesan</th><th>Tujuan</th><th>Anggaran</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="ordersBody"><tr><td colspan="6" class="note">Belum memuat data.</td></tr></tbody></table></div>
+</section></main><footer>© 2026 SUNTIK TIKTOK · Platform pengelolaan kampanye promosi</footer>
+<script>
+const money=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+document.getElementById("orderForm").addEventListener("submit",async e=>{
+ e.preventDefault();const btn=document.getElementById("submitBtn"),msg=document.getElementById("message");
+ btn.disabled=true;msg.textContent="Mengirim...";
+ const data=Object.fromEntries(new FormData(e.target).entries());data.budget=Number(data.budget);
+ try{const r=await fetch("/api/orders",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const j=await r.json();if(!r.ok)throw Error(j.error||"Gagal mengirim");msg.textContent=`Berhasil. ID: ${j.id} · ${j.status}`;e.target.reset();}
+ catch(err){msg.textContent=err.message;}finally{btn.disabled=false;}
+});
+async function loadOrders(){
+ const token=document.getElementById("adminToken").value,info=document.getElementById("adminMessage"),body=document.getElementById("ordersBody");
+ info.textContent="Memuat...";
+ try{const r=await fetch("/api/admin/orders",{headers:{Authorization:"Bearer "+token}});const j=await r.json();if(!r.ok)throw Error(j.error||"Gagal");
+ body.innerHTML="";
+ if(!j.orders.length){body.innerHTML='<tr><td colspan="6">Belum ada pesanan.</td></tr>';}
+ for(const o of j.orders){const tr=document.createElement("tr");
+  const vals=[new Date(o.createdAt).toLocaleString("id-ID"),o.name,o.objective,money(o.budget),o.status];
+  vals.forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td);});
+  const td=document.createElement("td"),sel=document.createElement("select");
+  ["Menunggu pemeriksaan","Diproses","Selesai","Ditolak","Perlu diproses manual"].forEach(s=>{const op=document.createElement("option");op.value=s;op.textContent=s;op.selected=s===o.status;sel.appendChild(op);});
+  sel.addEventListener("change",async()=>{const rr=await fetch("/api/admin/orders/"+encodeURIComponent(o.id),{method:"PATCH",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({status:sel.value})});if(!rr.ok)alert("Gagal memperbarui status");});
+  td.appendChild(sel);tr.appendChild(td);body.appendChild(tr);
+ }
+ info.textContent=`${j.orders.length} pesanan ditemukan.`;
+ }catch(err){info.textContent=err.message;}
+}
+document.getElementById("loadOrders").addEventListener("click",loadOrders);
+</script></body></html>

@@ -1,0 +1,8 @@
+{
+  "name": "suntik-tiktok-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard pemesanan kampanye promosi TikTok yang sah",
+  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
+  "dependencies": { "dotenv": "^16.4.5", "express": "^4.21.2" }
+}
